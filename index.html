@@ -33,6 +33,7 @@
             { x: 8, y: 10 }
         ];
         let direction = { x: 1, y: 0 };
+        let turnedThisTick = false;
         let food = { x: 15, y: 15 };
         let score = 0;
 
@@ -83,11 +84,55 @@
         const gameLoop = () => {
             moveSnake();
             drawGame();
+            turnedThisTick = false;
         };
-        setInterval(gameLoop, 200);
+        setInterval(gameLoop, 150);
 
 
         // Step 2: Keyboard controls (arrow keys)
+        document.addEventListener("keydown", (event) => {
+
+            if (turnedThisTick == true) {
+                return;
+            };
+
+            switch (event.key) {
+                case "ArrowUp": 
+                    if (direction.y === 0) {
+                        direction = { 
+                            x:0,
+                            y: -1
+                        }; turnedThisTick = true;
+                    };
+                    break;
+                case "ArrowDown":
+                    if (direction.y === 0) {
+                    direction = {
+                            x: 0,
+                            y: 1
+                        }; turnedThisTick = true;
+                    };
+                    break;
+                case "ArrowLeft":
+                    if (direction.x === 0) {
+                        direction = {
+                            x: -1,
+                            y: 0
+                        }; turnedThisTick = true;
+                    };
+                    break;
+                case "ArrowRight":
+                    if (direction.x === 0) {
+                        direction = {
+                            x: 1,
+                            y: 0
+                        }; turnedThisTick = true;
+                    };
+                    break;
+                }
+            });
+
+
         // Step 3: Eating and growing
         // Step 4: Game over
         // Step 5: Improvements
