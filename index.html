@@ -78,7 +78,19 @@
                 y: snake[0].y + direction.y
             };
             snake.unshift(head);
-            snake.pop();
+
+            if (head.x === food.x && head.y === food.y) {
+                score++;
+                document.getElementById("info").textContent = "The score is = " + score;
+                
+                food = {
+                    x: Math.floor(Math.random() * tileCount),
+                    y: Math.floor(Math.random() * tileCount)
+                }
+
+            } else {
+                snake.pop();
+            }
         };
 
         const gameLoop = () => {
@@ -134,6 +146,9 @@
 
 
         // Step 3: Eating and growing
+        
+
+
         // Step 4: Game over
         // Step 5: Improvements
         //
