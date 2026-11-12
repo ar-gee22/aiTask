@@ -17,6 +17,7 @@
     <canvas id="gameCanvas" width="400"
             height="400"></canvas>
     <p id="info"></p>
+    <button id ="restartB">Restart</button>
 
     <script>
         // ===== GAME SETUP =====
@@ -34,6 +35,7 @@
         ];
         let direction = { x: 1, y: 0 };
         let turnedThisTick = false;
+        let gameOver = false;
         let food = { x: 15, y: 15 };
         let score = 0;
 
@@ -81,6 +83,8 @@
             if ((head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) || 
                 snake.some(segment => segment.x === head.x && segment.y === head.y)) {
                 
+                    gameOver = true;
+                    document.getElementById("info").textContent = "Game Over! Score = " + score;
                     return;
             };
 
@@ -106,6 +110,9 @@
         };
 
         const gameLoop = () => {
+            if (gameOver) return;
+
+
             moveSnake();
             drawGame();
             turnedThisTick = false;
@@ -155,6 +162,26 @@
                     break;
                 }
             });
+        
+        // Restart
+
+        const restartB = document.getElementById("restartB");
+        restartB.addEventListener("click", () => {
+            snake = [
+            { x: 10, y: 10 },
+            { x: 9, y: 10 },
+            { x: 8, y: 10 }
+            ];
+            direction = { x: 1, y: 0 };
+            turnedThisTick = false;
+            gameOver = false;
+            food = { x: 15, y: 15 };
+            score = 0;
+
+            document.getElementById("info").textContent = "The score is = " + score;
+            drawGame();
+        });
+
 
 
         // Step 3: Eating and growing
