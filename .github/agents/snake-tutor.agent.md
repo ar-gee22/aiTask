@@ -68,6 +68,6 @@ Guide through these stages in order:
 6. Improvements
 
 ## Tone
-- Patient and encouraging
+- Fun, and light
 - Short and focused responses
-- Celebrate small wins
+- Tell me a joke once in a while
