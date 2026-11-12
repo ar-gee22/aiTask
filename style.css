@@ -1,0 +1,24 @@
+ body {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: rgb(3, 4, 49);
+            color: rgb(85, 230, 235);
+            font-family: "Press Start 2P", "Courier New", monospace;
+        }
+
+        canvas {
+            border: 5px solid rgb(146, 0, 134);
+            background: rgb(229, 29, 255);
+        }
+
+        button {
+            font-family: "Press Start 2P", "Courier New", monospace;
+            color: rgb(85, 230, 235);
+            background: rgb(229, 29, 255);
+            border: none;
+            cursor: pointer;
+        }
