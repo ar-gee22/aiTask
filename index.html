@@ -12,8 +12,10 @@
         body {
             display: flex;
             flex-direction: column;
+            margin: 0;
             align-items: center;
             justify-content: center;
+            min-height: 100vh;
             background: rgb(3, 4, 49);
             color: rgb(85, 230, 235);
             font-family: "Press Start 2P", "Courier New", monospace;
@@ -39,7 +41,7 @@
     <h1>SNAKE</h1>
     <canvas id="gameCanvas" width="400"
             height="400"></canvas>
-    <p id="info"></p>
+    <p id="info">The Score is = 0</p>
     <button id ="restartB">Restart</button>
 
     <script>
@@ -59,6 +61,8 @@
         let direction = { x: 1, y: 0 };
         let turnedThisTick = false;
         let gameOver = false;
+        let speed = 150;
+        let intervalId;
         let food = { x: 15, y: 15 };
         let score = 0;
 
@@ -118,7 +122,15 @@
 
             if (head.x === food.x && head.y === food.y) {
                 score++;
-                document.getElementById("info").textContent = "The score is = " + score;
+
+                if (score % 3 === 0 && speed > 70) {
+                    speed -= 10;
+                    clearInterval(intervalId);
+                    intervalId = setInterval(gameLoop, speed); 
+                }
+
+
+                document.getElementById("info").textContent = "The Score is = " + score;
                 
                 do {
                     food = { 
@@ -140,7 +152,7 @@
             drawGame();
             turnedThisTick = false;
         };
-        setInterval(gameLoop, 150);
+        intervalId = setInterval(gameLoop, speed);
 
 
         // Step 2: Keyboard controls (arrow keys)
@@ -201,7 +213,11 @@
             food = { x: 15, y: 15 };
             score = 0;
 
-            document.getElementById("info").textContent = "The score is = " + score;
+            speed = 150;
+            clearInterval(intervalId);
+            intervalId = setInterval(gameLoop, speed);
+
+            document.getElementById("info").textContent = "The Score is = " + score;
             drawGame();
         });
 
