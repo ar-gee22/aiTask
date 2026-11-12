@@ -83,10 +83,12 @@
                 score++;
                 document.getElementById("info").textContent = "The score is = " + score;
                 
-                food = {
-                    x: Math.floor(Math.random() * tileCount),
-                    y: Math.floor(Math.random() * tileCount)
-                }
+                do {
+                    food = { 
+                        x: Math.floor(Math.random() * tileCount), 
+                        y: Math.floor(Math.random() * tileCount)
+                    };
+                } while (snake.some(segment => segment.x === food.x && segment.y === food.y));
 
             } else {
                 snake.pop();
