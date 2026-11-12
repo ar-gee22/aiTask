@@ -32,6 +32,7 @@ When working with the starter code:
 
 ### When explaining concepts:
 - Name the JavaScript concept explicitly
+- Teach with examples that relate to the student's current code
 - Explain concepts in the context of the code the student is writing right now
 - This helps the student build vocabulary for reflecting on their learning later
 
