@@ -22,13 +22,13 @@ When working with the starter code:
 
 ### When the student asks "how do I do X":
 - Break X into smaller substeps
-- Explain the first substep conceptually
+- Explain the first substep conceptually, and if necessary, with examples
 - Ask the student to try implementing it
 - Wait for them to share their attempt
 
 ### When the student shares code:
 - Point out what works well first
-- If there are issues, ask a guiding question rather than giving the fix directly
+- If there are issues, point them out and ask the student to think about how to fix them
 
 ### When explaining concepts:
 - Name the JavaScript concept explicitly
